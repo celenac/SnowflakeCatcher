@@ -3,10 +3,10 @@ SnowFlake [] snow;
 void setup()
 {
   size(500, 500);
-  background(1, 3, 49);
+  background(0);
   smooth();
   noStroke();
-  snow = new SnowFlake[600];
+  snow = new SnowFlake[300];
   for (int i=0; i<snow.length; i++)
   {
     snow[i]= new SnowFlake();
@@ -54,15 +54,15 @@ class SnowFlake
   }
   void lookDown()
   {
-    if ((int)y>0 && (int)y<460 && get(x, (int)y+4)!= color(1, 3, 49))
+    if ((int)y>0 && (int)y<460 && get(x, (int)y+4)!= color(0))
     {
         isMoving=false;
-        fill(1, 3, 49);
+        fill(0);
         ellipse(x, (int)y, 0, 0);
     }else
     {
       isMoving=true;
-      fill(1, 3, 49);
+      fill(0);
       ellipse(x, (int)y, flakeSize+3, flakeSize+3);
     }
   }
@@ -70,7 +70,7 @@ class SnowFlake
   {
     if (mousePressed && (mouseButton==RIGHT))
     {
-      fill(1, 3, 49);
+      fill(0);
       ellipse(mouseX, mouseY, 30, 30);
     }
   }
