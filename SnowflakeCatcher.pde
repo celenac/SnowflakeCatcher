@@ -6,7 +6,7 @@ void setup()
   background(0);
   smooth();
   noStroke();
-  snow = new SnowFlake[300];
+  snow = new SnowFlake[325];
   for (int i=0; i<snow.length; i++)
   {
     snow[i]= new SnowFlake();
@@ -35,35 +35,34 @@ void mouseDragged()
 
 class SnowFlake
 {
-  int x, flakeSize;
+  int x, flakeSize, flakeSpeed, y;
   boolean isMoving;
-  double y, flakeSpeed;
   SnowFlake()
   {
     x=(int)(Math.random()*500);
-    y=(Math.random()*500);
+    y=(int)(Math.random()*500);
     isMoving=true;
     flakeSize=(int)(Math.random()*6);
-    flakeSpeed=(Math.random()*2+.5);
+    flakeSpeed=(int)(Math.random()*2+1);
   }
   void show()
   {
     noStroke();
     fill(255);
-    ellipse(x, (int)(y), flakeSize, flakeSize);
+    ellipse(x, y, flakeSize, flakeSize);
   }
   void lookDown()
   {
-    if ((int)y>0 && (int)y<460 && get(x, (int)y+4)!= color(0))
+    if (y>0 && y<460 && get(x, y+4)!= color(0))
     {
         isMoving=false;
         fill(0);
-        ellipse(x, (int)y, 0, 0);
+        ellipse(x, y, 0, 0);
     }else
     {
       isMoving=true;
       fill(0);
-      ellipse(x, (int)y, flakeSize+3, flakeSize+3);
+      ellipse(x, y, flakeSize+3, flakeSize+3);
     }
   }
   void erase()
@@ -87,7 +86,8 @@ class SnowFlake
     {
       y=-1;
       x=(int)(Math.random()*500);
-      flakeSpeed=Math.random()*1.2+.9;
+      flakeSpeed=(int)(Math.random()*2+1);
+      flakeSize=(int)(Math.random()*6);
     }
   }
 }
